@@ -1,8 +1,14 @@
-defmodule PiskoTest do
+defmodule Pisko.CommitsTest do
   use ExUnit.Case
-  doctest Pisko
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  setup_all do
+    { :ok, [repo: "VladimirMikhailov/pg_dirtyread"] }
+  end
+
+  test "list/2", %{repo: repo} do
+     use_cassette "commits#list" do
+       assert Pisko.Commits.list(repo, [since: "2016-04-08"]) == []
+     end
   end
 end

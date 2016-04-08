@@ -28,8 +28,9 @@ defmodule Pisko.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      {:tentacat, "~> 0.2"},
       {:dogma, "~> 0.1", only: :dev},
-      {:tentacat, "~> 0.2"}
+      {:exvcr, "~> 0.6", only: :test}
     ]
   end
 end
