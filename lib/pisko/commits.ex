@@ -10,12 +10,9 @@ defmodule Pisko.Commits do
   )
 
   def list(repo, params) do
-    get(
-      "repos/#{repo}/commits",
-      @client,
-      params,
-      [pagination: :stream]
-    ) |> find_all(repo)
+    "repos/#{repo}/commits"
+    |> get(@client, params, [pagination: :stream])
+    |> find_all(repo)
   end
 
   def find(repo, %{"sha" => sha} = _commit) do

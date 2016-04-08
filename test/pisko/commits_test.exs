@@ -3,7 +3,11 @@ defmodule PiskoTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   setup do
-    commits = Pisko.Commits.list("VladimirMikhailov/pg_dirtyread", [since: "2016-03-29"])
+    commits = Pisko.Commits.list(
+      "VladimirMikhailov/pg_dirtyread",
+      [since: "2016-03-29"]
+    )
+
     { :ok, [commits: commits] }
   end
 
