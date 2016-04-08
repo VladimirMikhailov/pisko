@@ -1,6 +1,7 @@
 # Pisko
 
-**TODO: Add description**
+The app aims to gather information about latest activity from github
+and write it to log in order to build graphs and stats and the end
 
 ## Installation
 

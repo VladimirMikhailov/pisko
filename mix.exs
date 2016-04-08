@@ -14,7 +14,7 @@ defmodule Pisko.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :tentacat]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +27,10 @@ defmodule Pisko.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:tentacat, "~> 0.2"},
+      {:dogma, "~> 0.1", only: :dev},
+      {:exvcr, "~> 0.6", only: :test}
+    ]
   end
 end
