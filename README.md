@@ -3,6 +3,10 @@
 The app aims to gather information about latest activity from github
 and write it to log in order to build graphs and stats and the end
 
+## Dependencies
+
+  - Elasticsearch
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
