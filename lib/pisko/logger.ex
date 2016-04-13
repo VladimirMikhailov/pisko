@@ -2,7 +2,7 @@ defmodule Pisko.Logger do
   @moduledoc """
     Saves commits into elasticsearch
 
-    Examples:
+    ## Examples
       iex> Pisko.Logger.log(commit)
 
 

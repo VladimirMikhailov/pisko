@@ -5,7 +5,7 @@ defmodule Pisko.Commits do
     including stats from single commit api end point
     (https://developer.github.com/v3/repos/commits/#get-a-single-commit)
 
-    Examples:
+    ## Examples
 
       iex> Pisko.Commits.list("awesome/repo", [since: "2016-03-14"])
   """
