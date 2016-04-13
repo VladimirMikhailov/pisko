@@ -27,4 +27,5 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
+config :pisko, elastic: "http://127.0.0.1:9200"
 import_config "#{Mix.env}.private.exs"
