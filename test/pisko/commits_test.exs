@@ -1,26 +1,26 @@
-defmodule PiskoTest do
+defmodule Pisko.CommitsTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   setup do
-    commits = Pisko.Commits.list(
-      "VladimirMikhailov/pg_dirtyread",
-      [since: "2016-03-29"]
-    )
+    use_cassette "commits#list" do
+      commits = Pisko.Commits.list(
+        "VladimirMikhailov/pg_dirtyread",
+        [since: "2016-03-29"]
+      )
 
-    { :ok, [commits: commits] }
+      { :ok, [commits: commits] }
+    end
   end
 
   test "list/2", %{commits: commits} do
-     use_cassette "commits#list" do
-       assert length(commits) == 4
-     end
+    assert length(commits) == 4
   end
 
   test "list/2 full info", %{commits: commits} do
-     use_cassette "commits#list" do
-       commit = commits |> List.first
-       assert(Map.has_key?(commit, "stats"))
-     end
+     commits
+      |> List.first
+      |> Map.has_key?("stats")
+      |> assert
   end
 end
