@@ -1,4 +1,4 @@
-defmodule Pisko.CommitsTest do
+defmodule PiskoTest do
   use ExUnit.Case
   doctest Pisko
 end

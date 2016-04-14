@@ -1,4 +1,4 @@
-defmodule PiskoTest do
+defmodule Pisko.CommitsTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
