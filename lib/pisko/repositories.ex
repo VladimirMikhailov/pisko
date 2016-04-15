@@ -18,4 +18,9 @@ defmodule Pisko.Repositories do
       @client
     )
   end
+
+  @doc "Returns items attribute from repositories list response"
+  def items(owner, since) do
+    Map.get(list(owner, since), "items")
+  end
 end
