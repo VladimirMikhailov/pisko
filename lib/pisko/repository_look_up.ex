@@ -5,10 +5,10 @@ defmodule Pisko.RepositioryLookUp do
 
     ## Examples
 
-      iex> Pisko.RepositioryLookUp.collect("VladimirMikhailov/pg_dirtyread")
+      iex> Pisko.RepositioryLookUp.start("VladimirMikhailov/pg_dirtyread")
   """
 
-  def collect(repository) do
+  def start(repository) do
     Enum.each(commits(repository), &log/1)
   end
 
