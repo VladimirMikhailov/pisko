@@ -12,7 +12,12 @@ defmodule Pisko do
     import Supervisor.Spec
 
     children = [
-      supervisor(Task.Supervisor, [[name: Pisko.Log]])
+      supervisor(Task.Supervisor, [[name: Pisko.Log]]),
+      worker(
+        Pisko.ListLookUpTask,
+        [Pisko.OrganizationsLookUp, organizations],
+        restart: :temporary
+      )
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one)

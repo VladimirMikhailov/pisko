@@ -9,15 +9,13 @@ defmodule Pisko.OrganizationsLookUp do
       iex> Pisko.OrganizationLookUp.start("piskopie")
   """
 
-  def start(organizations) do
-    Enum.each(organizations, &lookup_repositories/1)
+  alias Pisko.ListLookUpTask, as: Task
+
+  def lookup(organization) do
+    Task.start_link(Pisko.RepositoryLookUp, repositories(organization))
   end
 
-  defp lookup_repositories(organization) do
-    Pisko.Repositories.list(organization, "2016-03-12") |> Enum.each(&lookup_repository/1)
-  end
-
-  defp lookup_repository(%{"full_name" => repository}) do
-    Task.start_link(Pisko.RepositoryLookUp, :start, [repository])
+  defp repositories(organization) do
+    organization |> Pisko.Repositories.list("2016-03-12") |> Enum.to_list
   end
 end
