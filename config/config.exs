@@ -28,4 +28,5 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 config :pisko, elastic: "http://127.0.0.1:9200"
+config :pisko, organizations: ["piskopie"]
 import_config "#{Mix.env}.private.exs"

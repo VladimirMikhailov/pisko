@@ -1,14 +1,14 @@
-defmodule Pisko.Repositiory do
+defmodule Pisko.RepositioryLookUp do
   @moduledoc """
     Gathers information from github repository
     and passes it to logger in sync mode
 
-    ##Examples
+    ## Examples
 
-      iex> Pisko.Repositiory.collect("VladimirMikhailov/pg_dirtyread")
+      iex> Pisko.RepositioryLookUp.lookup("VladimirMikhailov/pg_dirtyread")
   """
 
-  def collect(repository) do
+  def lookup(repository) do
     Enum.each(commits(repository), &log/1)
   end
 
