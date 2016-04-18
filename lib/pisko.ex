@@ -6,8 +6,6 @@ defmodule Pisko do
 
   use Application
 
-  @repository "VladimirMikhailov/pg_dirtyread"
-
   def start(_type, _args) do
     import Supervisor.Spec
 

@@ -6,7 +6,7 @@ defmodule Pisko.OrganizationsLookUp do
 
     ## Examples
 
-      iex> Pisko.OrganizationLookUp.start("piskopie")
+      iex> Pisko.OrganizationLookUp.lookup("piskopie")
   """
 
   alias Pisko.ListLookUpTask, as: Task
@@ -16,6 +16,6 @@ defmodule Pisko.OrganizationsLookUp do
   end
 
   defp repositories(organization) do
-    organization |> Pisko.Repositories.list("2016-03-12") |> Enum.to_list
+    Pisko.Repositories.items(organization, "2016-03-12")
   end
 end
