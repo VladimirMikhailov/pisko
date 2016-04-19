@@ -32,6 +32,8 @@ defmodule Pisko.Mixfile do
       {:tentacat, "~> 0.2"},
       {:elastix, "~> 0.1.1"},
       {:good_times, "~> 1.1"},
+      {:exometer, github: "Feuerlabs/exometer_core"},
+      {:elixometer, github: "pinterest/elixometer"},
       {:dogma, "~> 0.1", only: :dev},
       {:exvcr, "~> 0.6", only: :test}
     ]
