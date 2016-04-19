@@ -3,6 +3,7 @@ defmodule Pisko.LoggerTest do
   alias Pisko.Elastix.Commits, as: CommitsDocument
 
   setup do
+    {:ok, _apps} = Application.ensure_all_started(:elastix)
     {:ok, %{commit: %{"sha" => "1", "info" => "info"}}}
   end
 
