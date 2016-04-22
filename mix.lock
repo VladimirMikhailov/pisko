@@ -6,7 +6,7 @@
   "elixometer": {:git, "https://github.com/pinterest/elixometer.git", "cd778fdf445fc3fc5466a0e6d9543123e83d8ede", []},
   "exactor": {:hex, :exactor, "2.2.0"},
   "exjsx": {:hex, :exjsx, "3.2.0"},
-  "exometer": {:git, "https://github.com/Feuerlabs/exometer_core.git", "ccc18cf0328692756fd9b837a88823cf979da8e1", []},
+  "exometer": {:git, "https://github.com/PSPDFKit-labs/exometer_core.git", "ccc18cf0328692756fd9b837a88823cf979da8e1", []},
   "exometer_core": {:git, "https://github.com/PSPDFKit-labs/exometer_core.git", "ccc18cf0328692756fd9b837a88823cf979da8e1", []},
   "exvcr": {:hex, :exvcr, "0.7.2"},
   "gettext": {:hex, :gettext, "0.11.0"},
