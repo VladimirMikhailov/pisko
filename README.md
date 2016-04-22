@@ -6,6 +6,8 @@ and write it to log in order to build graphs and stats and the end
 ## Dependencies
 
   - Elasticsearch
+  - [StatsD](https://github.com/etsy/statsd)
+  - [StatsD ElasticSearch](https://github.com/markkimsal/statsd-elasticsearch-backend)
 
 ## Installation
 
