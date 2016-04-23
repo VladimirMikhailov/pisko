@@ -14,7 +14,7 @@ defmodule Pisko.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :tentacat, :elastix],
+    [applications: [:lager, :exometer, :logger, :tentacat, :elastix],
     mod: {Pisko, []}]
   end
 
@@ -32,6 +32,11 @@ defmodule Pisko.Mixfile do
       {:tentacat, "~> 0.2"},
       {:elastix, "~> 0.1.1"},
       {:good_times, "~> 1.1"},
+      {:lager, github: "basho/lager", tag: "2.1.0", override: true},
+      {:edown, github: "uwiger/edown", tag: "0.7", override: true},
+      {:exometer, github: "PSPDFKit-labs/exometer"},
+      {:exometer_core, github: "PSPDFKit-labs/exometer_core", override: true},
+      {:elixometer, github: "pinterest/elixometer"},
       {:dogma, "~> 0.1", only: :dev},
       {:exvcr, "~> 0.6", only: :test}
     ]

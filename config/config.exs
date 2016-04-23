@@ -29,4 +29,25 @@ use Mix.Config
 #
 config :pisko, elastic: "http://127.0.0.1:9200"
 config :pisko, organizations: ["piskopie"]
+
 import_config "#{Mix.env}.private.exs"
+
+memory_stats = ~w(atom binary ets processes total)a
+
+config :exometer,
+   predefined: [
+     {
+       ~w(erlang memory)a,
+       {:function, :erlang, :memory, [], :proplist, memory_stats},
+       []
+     }
+   ],
+   report: [
+     reporters: [{:exometer_report_statsd, []}],
+     subscribers: [
+       {
+         :exometer_report_statsd,
+         [:erlang, :memory], memory_stats, 1_000, true
+       }
+     ]
+   ]

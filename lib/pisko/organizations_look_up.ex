@@ -10,9 +10,12 @@ defmodule Pisko.OrganizationsLookUp do
   """
 
   alias Pisko.ListLookUpTask, as: Task
+  use Elixometer
 
   def lookup(organization) do
-    Task.start_link(Pisko.RepositoryLookUp, repositories(organization))
+    timed("metrics.timer.organizations.#{organization}") do
+      Task.start_link(Pisko.RepositoryLookUp, repositories(organization))
+    end
   end
 
   defp repositories(organization) do
