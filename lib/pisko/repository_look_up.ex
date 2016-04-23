@@ -15,11 +15,8 @@ defmodule Pisko.RepositoryLookUp do
 
       iex> Pisko.RepositoryLookUp.lookup(%{full_name => "VladimirMikhailov/pg_dirtyread"})
   """
-  use Elixometer
-
   def lookup(%{"full_name" => repository}), do: lookup(repository)
 
-  @timed(key: "timed.repository_look_up")
   def lookup(repository) do
     Enum.each(commits(repository), &log/1)
   end
