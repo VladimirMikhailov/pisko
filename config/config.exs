@@ -27,9 +27,9 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-config :pisko, elastic: "http://127.0.0.1:9200"
-config :pisko, organizations: ["piskopie"]
-config :pisko, timeframe: ["2016-03-12", "2016-04-12"]
+config(:pisko, elastic: System.get_env("ELASTIC_URL") || "http://127.0.0.1:9200")
+config(:pisko, organizations: String.split((System.get_env("ORGANIZATIONS") || "piskopie"), ","))
+config(:pisko, timeframe: String.split((System.get_env("TIMEFRAME") || "2016-03-12,2016-04-12"), ","))
 
 import_config "#{Mix.env}.private.exs"
 import_config "exometer.exs"
