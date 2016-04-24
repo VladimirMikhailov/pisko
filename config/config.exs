@@ -14,7 +14,7 @@ use Mix.Config
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:pisko, :key)
+#     Pisko.get_env(:key)
 #
 # Or configure a 3rd-party app:
 #
