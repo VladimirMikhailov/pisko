@@ -8,6 +8,8 @@ defmodule Pisko.RepositoryLookUp do
       iex> Pisko.RepositoryLookUp.lookup("VladimirMikhailov/pg_dirtyread")
   """
 
+  import Pisko.Config, only: [since: 0, until: 0]
+
   @doc """
     Start retrieving and log commits for the repo
 
@@ -28,15 +30,7 @@ defmodule Pisko.RepositoryLookUp do
   defp commits(repository) do
     Pisko.Commits.list(
       repository,
-      [since: month_ago]
+      [since: since, until: until]
     )
-  end
-
-  defp month_ago do
-    import GoodTimes
-
-    {{year, month, day}, _} = months_ago(1)
-
-    "#{year}-#{month}-#{day}"
   end
 end

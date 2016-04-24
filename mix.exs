@@ -31,7 +31,6 @@ defmodule Pisko.Mixfile do
     [
       {:tentacat, "~> 0.2"},
       {:elastix, "~> 0.1.1"},
-      {:good_times, "~> 1.1"},
       {:lager, github: "basho/lager", tag: "2.1.0", override: true},
       {:edown, github: "uwiger/edown", tag: "0.7", override: true},
       {:exometer, github: "PSPDFKit-labs/exometer"},

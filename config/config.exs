@@ -14,7 +14,7 @@ use Mix.Config
 #
 # And access this configuration in your application as:
 #
-#     Pisko.get_env(:key)
+#     Pisko.Config.get_env(:key)
 #
 # Or configure a 3rd-party app:
 #
@@ -29,6 +29,7 @@ use Mix.Config
 #
 config :pisko, elastic: "http://127.0.0.1:9200"
 config :pisko, organizations: ["piskopie"]
+config :pisko, timeframe: ["2016-03-12", "2016-04-12"]
 
 import_config "#{Mix.env}.private.exs"
 import_config "exometer.exs"

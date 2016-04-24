@@ -9,8 +9,11 @@ defmodule Pisko.OrganizationsLookUp do
       iex> Pisko.OrganizationLookUp.lookup("piskopie")
   """
 
-  alias Pisko.ListLookUpTask, as: Task
   use Elixometer
+
+  alias Pisko.ListLookUpTask, as: Task
+
+  import Pisko.Config, only: [since: 0]
 
   def lookup(organization) do
     timed("metrics.timer.organizations.#{organization}") do
@@ -19,6 +22,6 @@ defmodule Pisko.OrganizationsLookUp do
   end
 
   defp repositories(organization) do
-    Pisko.Repositories.items(organization, "2016-03-12")
+    Pisko.Repositories.items(organization, since)
   end
 end
