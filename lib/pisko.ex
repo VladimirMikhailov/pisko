@@ -5,6 +5,7 @@ defmodule Pisko do
   """
 
   use Application
+  import Pisko.Config, only: [get_env: 1]
 
   def start(_type, _args) do
     import Supervisor.Spec
@@ -22,6 +23,6 @@ defmodule Pisko do
   end
 
   defp organizations do
-    Application.get_env(:pisko, :organizations)
+    get_env(:organizations)
   end
 end
