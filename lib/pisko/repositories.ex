@@ -9,7 +9,7 @@ defmodule Pisko.Repositories do
   """
 
   @client Tentacat.Client.new(
-    %{access_token: Pisko.Config.get_env(:access_token)}
+    %{access_token: Pisko.Github.Access.token}
   )
 
   def list(owner, since) do

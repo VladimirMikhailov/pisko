@@ -13,7 +13,7 @@ defmodule Pisko.Commits do
   import Tentacat, only: [get: 4, get: 2]
 
   @client Tentacat.Client.new(
-    %{access_token: Pisko.Config.get_env(:access_token)}
+    %{access_token: Pisko.Github.Access.token}
   )
 
   def list(repo, params) do
