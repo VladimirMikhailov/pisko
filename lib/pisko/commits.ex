@@ -10,20 +10,16 @@ defmodule Pisko.Commits do
       iex> Pisko.Commits.list("awesome/repo", [since: "2016-03-14"])
   """
 
-  import Tentacat, only: [get: 4, get: 2]
-
-  @client Tentacat.Client.new(
-    %{access_token: Pisko.Github.Access.token}
-  )
+  import Pisko.Github.Client, only: [list: 1, get: 1]
 
   def list(repo, params) do
     "repos/#{repo}/commits"
-    |> get(@client, params, [pagination: :stream])
+    |> list([params, [pagination: :stream]])
     |> find_all(repo)
   end
 
   def find(repo, %{"sha" => sha} = _commit) do
-    get("repos/#{repo}/commits/#{sha}", @client)
+    get(["repos/#{repo}/commits/#{sha}"])
   end
 
   defp find_all(stream, repo) do

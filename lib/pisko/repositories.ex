@@ -8,15 +8,8 @@ defmodule Pisko.Repositories do
       iex> Pisko.Repositories.list("awesome", "2016-03-14")
   """
 
-  @client Tentacat.Client.new(
-    %{access_token: Pisko.Github.Access.token}
-  )
-
   def list(owner, since) do
-    Tentacat.Search.repositories(
-      %{q: "user:#{owner} pushed:>=#{since}"},
-      @client
-    )
+    Pisko.Github.Client.search(q: "user:#{owner} pushed:>=#{since}")
   end
 
   @doc "Returns items attribute from repositories list response"
