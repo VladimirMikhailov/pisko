@@ -3,16 +3,16 @@ defmodule Pisko.Github.Client do
     Single access point to github api
   """
 
-  def list(args) do
-    apply(Tentacat.get, [client | args])
+  def list(url, params) do
+    apply(Tentacat, :get, [url, client | params])
   end
 
   def search(params) do
     Tentacat.Search.repositories(params, client)
   end
 
-  def get(args) do
-    apply(Tentacat.get, [args | client])
+  def get(url) do
+    Tentacat.get(url, client)
   end
 
   defp client do

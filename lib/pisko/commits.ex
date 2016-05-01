@@ -10,16 +10,16 @@ defmodule Pisko.Commits do
       iex> Pisko.Commits.list("awesome/repo", [since: "2016-03-14"])
   """
 
-  import Pisko.Github.Client, only: [list: 1, get: 1]
+  import Pisko.Github.Client, only: [get: 1]
 
   def list(repo, params) do
     "repos/#{repo}/commits"
-    |> list([params, [pagination: :stream]])
+    |> Pisko.Github.Client.list([params, [pagination: :stream]])
     |> find_all(repo)
   end
 
   def find(repo, %{"sha" => sha} = _commit) do
-    get(["repos/#{repo}/commits/#{sha}"])
+    get("repos/#{repo}/commits/#{sha}")
   end
 
   defp find_all(stream, repo) do
