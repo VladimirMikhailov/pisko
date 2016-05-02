@@ -29,7 +29,7 @@ defmodule Pisko.Github.Access do
   end
 
   defp token(%{reset: reset}, system_time) when reset > system_time do
-    send(self(), {:wait_until, reset})
+    Process.exit(self(), {:wait_until, reset})
   end
 
   defp token(%{token: token}, _system_time), do: token

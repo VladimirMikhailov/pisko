@@ -15,8 +15,9 @@ defmodule Pisko.Github.AccessTest do
     reset = :erlang.system_time + :timer.minutes(5)
 
     Access.update(reset)
+    Process.flag(:trap_exit, true)
     Access.token
 
-    assert_receive({:wait_until, reset}, 50)
+    assert_receive({:EXIT, self, {:wait_until, reset}}, 50)
   end
 end
