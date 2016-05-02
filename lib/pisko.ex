@@ -12,6 +12,7 @@ defmodule Pisko do
 
     children = [
       supervisor(Task.Supervisor, [[name: Pisko.Log]]),
+      worker(Pisko.Github.Access, []),
       worker(
         Pisko.ListLookUpTask,
         [Pisko.OrganizationsLookUp, organizations],
