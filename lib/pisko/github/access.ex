@@ -9,11 +9,32 @@ defmodule Pisko.Github.Access do
 
     ## Examples
       iex> Application.put_env(:pisko, :access_token, "u1d1")
+      iex> Pisko.Github.Access.start_link
       ...> Pisko.Github.Access.token
       "u1d1"
   """
 
+  def start_link do
+    Agent.start_link(fn -> init end, name: __MODULE__)
+  end
+
+  @doc "Updates token's reset time info"
+  def update(reset) do
+    Agent.update(__MODULE__, fn (token) -> %{ token | reset: reset } end)
+  end
+
+  @doc "Returns token if reset time is in the past"
   def token do
-    Pisko.Config.get_env(:access_token)
+    Agent.get(__MODULE__, &(&1)) |> token(:erlang.system_time)
+  end
+
+  defp token(%{reset: reset}, system_time) when reset > system_time do
+    send(self(), {:wait_until, reset})
+  end
+
+  defp token(%{token: token}, _system_time), do: token
+
+  defp init do
+    %{token: Pisko.Config.get_env(:access_token), reset: 0}
   end
 end
