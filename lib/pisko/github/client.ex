@@ -12,7 +12,12 @@ defmodule Pisko.Github.Client do
   end
 
   def get(url) do
-    Tentacat.get(url, client)
+    Process.flag(:trap_exit, true)
+    spawn_link(fn -> Tentacat.get(url, client) end)
+
+    receive do
+      {:EXIT, _from, {:wait_until, reset}} -> :timer.sleep(reset - :erlang.system_time)
+    end
   end
 
   defp client do
