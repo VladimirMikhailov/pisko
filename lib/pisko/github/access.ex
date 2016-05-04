@@ -8,8 +8,8 @@ defmodule Pisko.Github.Access do
     variable
 
     ## Examples
-      iex> Application.put_env(:pisko, :access_token, "u1d1")
       iex> Pisko.Github.Access.start_link
+      ...> Agent.update(Pisko.Github.Access, fn (token) -> %{ token: "u1d1", reset: 0 } end)
       ...> Pisko.Github.Access.token
       "u1d1"
   """
