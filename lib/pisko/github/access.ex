@@ -25,7 +25,7 @@ defmodule Pisko.Github.Access do
 
   @doc "Returns token if reset time is in the past"
   def token do
-    Agent.get(__MODULE__, &(&1)) |> token(:erlang.system_time)
+    __MODULE__ |> Agent.get(&(&1)) |> token(:erlang.system_time)
   end
 
   defp token(%{reset: reset}, system_time) when reset > system_time do
