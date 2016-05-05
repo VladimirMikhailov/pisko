@@ -37,7 +37,8 @@ defmodule Pisko.Mixfile do
       {:exometer_core, github: "PSPDFKit-labs/exometer_core", override: true},
       {:elixometer, github: "pinterest/elixometer"},
       {:dogma, "~> 0.1", only: :dev},
-      {:exvcr, "~> 0.6", only: :test}
+      {:exvcr, "~> 0.6", only: :test},
+      {:mock, "~> 0.1.1", only: :test}
     ]
   end
 end
